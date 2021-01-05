@@ -128,7 +128,7 @@ document.getElementById("piano").addEventListener("mousedown", (e) => {
 document.getElementById("piano").addEventListener("mouseup", (e) => {
   noteOn = false;
   console.log(noteOn);
-
+  context.resume();
   rampAmpValuesR(ampR, myGain.gain);
   filterTestR();
 });
