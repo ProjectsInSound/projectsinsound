@@ -1,4 +1,3 @@
-import "./styles.css";
 var context = new AudioContext();
 
 var notes = {
