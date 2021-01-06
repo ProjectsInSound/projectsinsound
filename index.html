@@ -1,24 +1,104 @@
+
 <!DOCTYPE html>
+
 <html>
-
-    <h1>Hello Vanilla!</h1>
-    <div>
-      We use the same configuration as Parcel to bundle this sandbox, you can find more
-      info about Parcel 
-      <a href="https://parceljs.org" target="_blank" rel="noopener noreferrer">here</a>.
-    </div>
-  <head>
-    <title>Parcel Sandbox</title>
-    <meta charset="UTF-8" />
-  </head>
-
-  <body>
-    <div id="app"></div>
-
+    <head>
+        <link rel="styles" href="src/styles.css">
     
+      </head>
+<main>
+  <div>
+<h1> Welcome to My Website!</h1>
+  
+<div>
+  <p>
+Hello, I'm Graham. 
+<br>
+This is  my website that I have made to apply to Founders and Coders.
+<br>
+Please select one of these options.
+  </p>
+</div>
+</main>
+
+
+<div class = "buttonsAndText">
+<br>
+<div id = "whyApplyContainer">
+<button class = "button" onclick="openApply()">Why I'm applying</button>
+
+<div id="whyImApplying">
+  <h2> Why I'm Applying </h2>
+
+  <p>
+    This is my paragraph 1
+  </p>
+  <p>
+      This is my paragraph 2
+    </p>
+</div>
+
+</div>
+<script>
+document.getElementById("whyImApplying").style.display = "none";
+
+function openApply() {
+  var x = document.getElementById("whyImApplying");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+
+
+<div id = "gitHubButton">
+<input  class = "button"  type="button" onclick="location.href='https://github.com/grahamkeith/grahamkeith.github.io';" value="My Github Repository" />
+</div>
+
+<div id = "freecodecampButton">
+<input class = "button"  type="button" onclick="location.href = 'https://www.freecodecamp.org/fcc469fe256-251c-4e84-9d8a-a301f0a63cdf';" value="My Free Code Camp Profile" />
+</div>
+
+<div id = codeWarssButton>
+  <input class = "button"  type="button" onclick="location.href = 'https://www.codewars.com/users/GrahamK';" value="My Code Wars Profile" />
+  </div>
+
+
+
+
+  <div>
+    <button class = "button"  onclick="openSynth()">Play a Synthesiser!</button>
+    
+    <div id="Synth">
+      <h2> Synth Header </h2>
+    
+      <p>
+        Synth Info Paragraph
+      </p>
+      
+    
+      <script>
+        document.getElementById("Synth").style.display = "none";
+        
+        function openSynth() {
+          var x = document.getElementById("Synth");
+          if (x.style.display === "none") {
+            x.style.display = "block";
+          } else {
+            x.style.display = "none";
+          }
+        }
+        </script>
+    
+  
+      <div class="adsrHolder">
+
+<h3> Amplitude Envelope </h3>
 
     <div class="slidecontainer">
-      A<input
+      Attack<input
         type="range"
         min="100"
         max="500"
@@ -31,8 +111,10 @@
 
     </div>
 
+
+
     <div class="slidecontainer">
-      D<input
+      Decay<input
         type="range"
         min="100"
         max="500"
@@ -44,7 +126,7 @@
     </div>
 
     <div class="slidecontainer">
-      S<input
+      Sustain<input
         type="range"
         min="100"
         max="495"
@@ -56,7 +138,7 @@
     </div>
 
     <div class="slidecontainer">
-      R<input
+      Release<input
         type="range"
         min="100"
         max="500"
@@ -66,11 +148,19 @@
 			/>
 			<t id="ampSlideRText">0.01</t>
 		</div>
-		
-	</p>
-		
+    
+
+<div  class = "ADSRImage"  id = "ampAttackImage"></div>
+
+  </div>
+
+  </p>
+  
+  <div class="adsrHolder">
+      <h3> Filter Envelope </h3>
+    
 		<div class="slidecontainer">
-      A<input
+      Attack<input
         type="range"
         orient="vertical"
         min="100"
@@ -84,7 +174,7 @@
     </div>
 
     <div class="slidecontainer">
-      D<input
+      Decay<input
         type="range"
         min="100"
         max="500"
@@ -96,7 +186,7 @@
     </div>
 
     <div class="slidecontainer">
-      S<input
+      Sustain<input
         type="range"
         min="100"
         max="495"
@@ -107,8 +197,10 @@
 			<t id="filtSlideSText">1.00</t>
     </div>
 
+
+
     <div class="slidecontainer">
-      R<input
+      Release<input
         type="range"
         min="100"
         max="500"
@@ -118,6 +210,24 @@
 			/>
 			<t id="filtSlideRText">0.01</t>
     </div>
+
+  </div>
+  <p></p>
+
+  <div class="adsrHolder">
+    <h3>Filter Settings</h3>
+
+    <div class="slidecontainer">
+        Cutoff Frequency<input
+          type="range"
+          min="100"
+          max="500"
+          value="500"
+          class="slider"
+          id="cutoffslider"
+        />
+        <t id="cutofftext">19968</t>
+      </div>
 
     <div class="slidecontainer">
       Filter Envelope Amount<input
@@ -131,29 +241,26 @@
 			<t id="FilterEnvelopeAmountText">0</t>
     </div>
 
-    <div class="slidecontainer">
-      Cutoff Frequency<input
-        type="range"
-        min="100"
-        max="500"
-        value="500"
-        class="slider"
-        id="cutoffslider"
-			/>
-			<t id="cutofftext">19968</t>
-    </div>
+   
 
+  </div>
 
+  
 
-    <div id="piano">
-      <button data-note="c" id="c">c</button>
-      <button data-note="d">d</button>
-      <button data-note="e">e</button>
-      <button data-note="f">f</button>
-      <button data-note="g">g</button>
-      <button data-note="a">a</button>
-      <button data-note="b">b</button>
-      <button data-note="c2">c</button>
+    <div class = "pianoWhiteKeys" id="piano">
+      <button class = "pianoWhiteButton" data-note="c" id="c">C <br><br><br> A</button>
+      <button class = "pianoWhiteButton" data-note="d">D <br><br><br> S</button>
+      <button class = "pianoWhiteButton" data-note="e">E <br><br><br> D</button>
+      <button class = "pianoWhiteButton" data-note="f">F <br><br><br> F</button>
+      <button class = "pianoWhiteButton" data-note="g">G <br><br><br> G</button>
+      <button class = "pianoWhiteButton" data-note="a">A <br><br><br> H</button>
+      <button class = "pianoWhiteButton" data-note="b">B <br><br><br> I</button>
+      <button class = "pianoWhiteButton" data-note="c2">C <br><br><br> J</button>
+      <button class = "pianoWhiteButton" data-note="d2">D <br><br><br> K</button>
+      <button class = "pianoWhiteButton" data-note="e2">E <br><br><br> L</button>
+      <button class = "pianoWhiteButton" data-note="f2">F <br><br><br> ;</button>
+      <button class = "pianoWhiteButton" data-note="g2">G <br><br><br> '</button>
+      <button class = "pianoWhiteButton" data-note="a2">A <br><br><br> \</button>
     </div>
 
     
@@ -161,6 +268,12 @@
     <t id="Count">1</t>
 
     <script src="src/index.js"></script>
+  </div>
+  </div>
 
+</div>
   </body>
+
+  <footer>
+  </footer>
 </html>
