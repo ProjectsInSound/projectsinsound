@@ -172,7 +172,7 @@ window.onkeyup = function (event) {
 
   //the colour of the relevant keyboard button is set to white to show that it is no longer pressed
   if (document.getElementById(event.keyCode) != null) {
-    document.getElementById(event.keyCode).style.backgroundColor = "white";
+    document.getElementById(event.keyCode).style.backgroundColor = "lightgray";
   }
 };
 
