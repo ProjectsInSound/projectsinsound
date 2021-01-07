@@ -1,279 +1,291 @@
-
 <!DOCTYPE html>
-
 <html>
-    <head>
-        <link rel="styles" href="src/styles.css">
-	    <link rel="stylesheet" type="text/css" href="src/styles.css">
-    
-      </head>
-<main>
-  <div>
-<h1> Welcome to My Website!</h1>
-  
-<div>
-  <p>
-Hello, I'm Graham. 
-<br>
-This is  my website that I have made to apply to Founders and Coders.
-<br>
-Please select one of these options.
-  </p>
-</div>
-</main>
+  <head>
+    <title>Graham.com</title>
+    <link rel="stylesheet" type="text/css" href="src/styles.css" />
+  </head>
 
+  <body>
+    <header>
+      <h1>Welcome. Welcome. <br />Welcome.</h1>
 
-<div class = "buttonsAndText">
-<br>
-<div id = "whyApplyContainer">
-<button class = "button" onclick="openApply()">Why I'm applying</button>
+      <img
+        id="picture"
+        src="https://64.media.tumblr.com/3f7eea073887b4337f78550f8cf778e1/5f36b93a9c47840d-50/s1280x1920/1fe317877eceadbc351d892807c2b72fed0cb4ca.jpg"
+      />
+    </header>
 
-<div id="whyImApplying">
-  <h2> Why I'm Applying </h2>
+    <header id="header2">
+      <h3>
+        This website is for my application to Founders and Coders Spring 2021
+      </h3>
+    </header>
 
-  <p>
-    This is my paragraph 1
-  </p>
-  <p>
-      This is my paragraph 2
-    </p>
-</div>
-
-</div>
-<script>
-document.getElementById("whyImApplying").style.display = "none";
-
-function openApply() {
-  var x = document.getElementById("whyImApplying");
-  if (x.style.display === "none") {
-    x.style.display = "block";
-  } else {
-    x.style.display = "none";
-  }
-}
-</script>
-
-
-<div id = "gitHubButton">
-<input  class = "button"  type="button" onclick="location.href='https://github.com/grahamkeith/grahamkeith.github.io';" value="My Github Repository" />
-</div>
-
-<div id = "freecodecampButton">
-<input class = "button"  type="button" onclick="location.href = 'https://www.freecodecamp.org/fcc469fe256-251c-4e84-9d8a-a301f0a63cdf';" value="My Free Code Camp Profile" />
-</div>
-
-<div id = codeWarssButton>
-  <input class = "button"  type="button" onclick="location.href = 'https://www.codewars.com/users/GrahamK';" value="My Code Wars Profile" />
-  </div>
-
-
-
-
-  <div>
-    <button class = "button"  onclick="openSynth()">Play a Synthesiser!</button>
-    
-    <div id="Synth">
-      <h2> Synth Header </h2>
-    
-      <p>
-        Synth Info Paragraph
-      </p>
-      
-    
-      <script>
-        document.getElementById("Synth").style.display = "none";
-        
-        function openSynth() {
-          var x = document.getElementById("Synth");
-          if (x.style.display === "none") {
-            x.style.display = "block";
-          } else {
-            x.style.display = "none";
-          }
+    <script>
+      function openApply() {
+        var x = document.getElementById("whyImApplying");
+        var y = document.getElementById("synth");
+        if (x.style.display === "none") {
+          x.style.display = "flex";
+          y.style.display = "none";
+        } else {
+          x.style.display = "none";
+          y.style.display = "flex";
         }
-        </script>
-    
-  
-      <div class="adsrHolder">
+      }
 
-<h3> Amplitude Envelope </h3>
+      function openSynth() {
+        var x = document.getElementById("synth");
+        var y = document.getElementById("whyImApplying");
+        if (x.style.display === "none") {
+          x.style.display = "flex";
+          y.style.display = "none";
+        } else {
+          x.style.display = "none";
+          y.style.display = "flex";
+        }
+      }
+    </script>
 
-    <div class="slidecontainer">
-      Attack<input
-        type="range"
-        min="100"
-        max="500"
-        value="100"
-        class="slider"
-        id="ampSlideA"
-        s
-			/>
-			<t id="ampSlideAText">0.01</t>
+    <nav>
+      <button class="button" id="whyImApplyingButton" onclick="openApply()">
+        Why I'm applying
+      </button>
 
-    </div>
+      <button
+        class="button"
+        onclick="location.href='https://github.com/grahamkeith/grahamkeith.github.io';"
+      >
+        My Github Repository
+      </button>
 
+      <button
+        class="button"
+        onclick="location.href = 'https://www.freecodecamp.org/fcc469fe256-251c-4e84-9d8a-a301f0a63cdf';"
+      >
+        My Free Code Camp Profile
+      </button>
 
+      <button
+        class="button"
+        onclick="location.href = 'https://www.codewars.com/users/GrahamK';"
+      >
+        My Code Wars Profile
+      </button>
 
-    <div class="slidecontainer">
-      Decay<input
-        type="range"
-        min="100"
-        max="500"
-        value="100"
-        class="slider"
-        id="ampSlideD"
-			/>
-			<t id="ampSlideDText">0.01</t>
-    </div>
+      <button class="button" id="whyImApplyingButton" onclick="openSynth()">
+        Play a Synthesiser
+      </button>
+    </nav>
 
-    <div class="slidecontainer">
-      Sustain<input
-        type="range"
-        min="100"
-        max="495"
-        value="495"
-        class="slider"
-        id="ampSlideS"
-			/>
-			<t id="ampSlideSText">0.96</t>
-    </div>
+    <main>
+      <section id="whyImApplying">
+        <article>
+          <h2>About Me</h2>
+          <p>this is my First main section</p>
+          <h2>Why I'm Applying</h2>
+          <p>second paragraph</p>
+          <h2>Why I Could Be Good</h2>
+          <p>third paragraph</p>
+        </article>
+      </section>
 
-    <div class="slidecontainer">
-      Release<input
-        type="range"
-        min="100"
-        max="500"
-        value="100"
-        class="slider"
-        id="ampSlideR"
-			/>
-			<t id="ampSlideRText">0.01</t>
-		</div>
-    
+      <section id="synth">
+        <article>
+          <h3>About This Synthesiser</h3>
+          this is my Second main section
+        </article>
+        <article>
+          <h3>Amplitude Envelope</h3>
 
-<div  class = "ADSRImage"  id = "ampAttackImage"></div>
+          <div class="slidecontainer">
+            Attack<input
+              type="range"
+              min="100"
+              max="500"
+              value="100"
+              class="slider"
+              id="ampSlideA"
+              s
+            />
+            <t id="ampSlideAText">0.01</t>
+          </div>
 
-  </div>
+          <div class="slidecontainer">
+            Decay<input
+              type="range"
+              min="100"
+              max="500"
+              value="100"
+              class="slider"
+              id="ampSlideD"
+            />
+            <t id="ampSlideDText">0.01</t>
+          </div>
 
-  </p>
-  
-  <div class="adsrHolder">
-      <h3> Filter Envelope </h3>
-    
-		<div class="slidecontainer">
-      Attack<input
-        type="range"
-        orient="vertical"
-        min="100"
-        max="500"
-        value="100"
-        class="range-slider"
-        id="filtSlideA"
-        s
-			/>
-			<t id="filtSlideAText">0.01</t>
-    </div>
+          <div class="slidecontainer">
+            Sustain<input
+              type="range"
+              min="100"
+              max="495"
+              value="495"
+              class="slider"
+              id="ampSlideS"
+            />
+            <t id="ampSlideSText">0.96</t>
+          </div>
 
-    <div class="slidecontainer">
-      Decay<input
-        type="range"
-        min="100"
-        max="500"
-        value="100"
-        class="slider"
-        id="filtSlideD"
-			/>
-			<t id="filtSlideDText">0.01</t>
-    </div>
+          <div class="slidecontainer">
+            Release<input
+              type="range"
+              min="100"
+              max="500"
+              value="100"
+              class="slider"
+              id="ampSlideR"
+            />
+            <t id="ampSlideRText">0.01</t>
+          </div>
+        </article>
 
-    <div class="slidecontainer">
-      Sustain<input
-        type="range"
-        min="100"
-        max="495"
-        value="495"
-        class="slider"
-        id="filtSlideS"
-			/>
-			<t id="filtSlideSText">1.00</t>
-    </div>
+        <article>
+          <h3>Filter Envelope</h3>
 
+          <div class="slidecontainer">
+            Attack<input
+              type="range"
+              orient="vertical"
+              min="100"
+              max="500"
+              value="100"
+              class="range-slider"
+              id="filtSlideA"
+              s
+            />
+            <t id="filtSlideAText">0.01</t>
+          </div>
 
+          <div class="slidecontainer">
+            Decay<input
+              type="range"
+              min="100"
+              max="500"
+              value="100"
+              class="slider"
+              id="filtSlideD"
+            />
+            <t id="filtSlideDText">0.01</t>
+          </div>
 
-    <div class="slidecontainer">
-      Release<input
-        type="range"
-        min="100"
-        max="500"
-        value="100"
-        class="slider"
-        id="filtSlideR"
-			/>
-			<t id="filtSlideRText">0.01</t>
-    </div>
+          <div class="slidecontainer">
+            Sustain<input
+              type="range"
+              min="100"
+              max="495"
+              value="495"
+              class="slider"
+              id="filtSlideS"
+            />
+            <t id="filtSlideSText">1.00</t>
+          </div>
 
-  </div>
-  <p></p>
+          <div class="slidecontainer">
+            Release<input
+              type="range"
+              min="100"
+              max="500"
+              value="100"
+              class="slider"
+              id="filtSlideR"
+            />
+            <t id="filtSlideRText">0.01</t>
+          </div>
+        </article>
+        <article>
+          <h3>Filter Settings</h3>
 
-  <div class="adsrHolder">
-    <h3>Filter Settings</h3>
+          <div class="slidecontainer">
+            Cutoff Frequency<input
+              type="range"
+              min="100"
+              max="500"
+              value="500"
+              class="slider"
+              id="cutoffslider"
+            />
+            <t id="cutofftext">19968</t>
+          </div>
 
-    <div class="slidecontainer">
-        Cutoff Frequency<input
-          type="range"
-          min="100"
-          max="500"
-          value="500"
-          class="slider"
-          id="cutoffslider"
-        />
-        <t id="cutofftext">19968</t>
+          <div class="slidecontainer">
+            Filter Envelope Amount<input
+              type="range"
+              min="-500"
+              max="500"
+              value="0"
+              class="slider"
+              id="FilterEnvelopeAmountSlider"
+            />
+            <t id="FilterEnvelopeAmountText">0</t>
+          </div>
+        </article>
+      </section>
+
+      <div class="pianoWhiteKeys" id="piano">
+        <button class="pianoWhiteButton" data-note="65" id="65">
+          C <br /><br /><br />
+          A
+        </button>
+        <button class="pianoWhiteButton" data-note="83" id="83">
+          D<br /><br /><br />
+          S
+        </button>
+        <button class="pianoWhiteButton" data-note="68" id="68">
+          E <br /><br /><br />
+          D
+        </button>
+        <button class="pianoWhiteButton" data-note="70" id="70">
+          F <br /><br /><br />
+          F
+        </button>
+        <button class="pianoWhiteButton" data-note="71" id="71">
+          G <br /><br /><br />
+          G
+        </button>
+        <button class="pianoWhiteButton" data-note="72" id="72">
+          A <br /><br /><br />
+          H
+        </button>
+        <button class="pianoWhiteButton" data-note="74" id="74">
+          B <br /><br /><br />
+          J
+        </button>
+        <button class="pianoWhiteButton" data-note="75" id="75">
+          C <br /><br /><br />
+          K
+        </button>
+        <button class="pianoWhiteButton" data-note="76" id="76">
+          D <br /><br /><br />
+          L
+        </button>
+        <button class="pianoWhiteButton" data-note="186" id="186">
+          E <br /><br /><br />
+          ;
+        </button>
+        <button class="pianoWhiteButton" data-note="222" id="222">
+          F <br /><br /><br />
+          '
+        </button>
+        <button class="pianoWhiteButton" data-note="220" id="220">
+          G <br /><br /><br />
+          \
+        </button>
       </div>
+    </main>
+    <footer>
+      <p>Thank you for looking at my website. Hope you like it!</p>
+    </footer>
 
-    <div class="slidecontainer">
-      Filter Envelope Amount<input
-        type="range"
-        min="-500"
-        max="500"
-        value="0"
-        class="slider"
-        id="FilterEnvelopeAmountSlider"
-			/>
-			<t id="FilterEnvelopeAmountText">0</t>
-    </div>
-
-   
-
-  </div>
-
-  
-    <div class = "pianoWhiteKeys" id="piano">
-      <button class = "pianoWhiteButton" data-note="65" id="65">C <br><br><br> A</button>
-      <button class = "pianoWhiteButton" data-note="83" id = "83">D<br><br><br> S</button>
-      <button class = "pianoWhiteButton" data-note="68"id = "68">E <br><br><br> D</button>
-      <button class = "pianoWhiteButton" data-note="70"id = "70">F <br><br><br> F</button>
-      <button class = "pianoWhiteButton" data-note="71" = "71">G <br><br><br> G</button>
-      <button class = "pianoWhiteButton" data-note="72"id = "72">A <br><br><br> H</button>
-      <button class = "pianoWhiteButton" data-note="74"id = "74">B <br><br><br> J</button>
-      <button class = "pianoWhiteButton" data-note="75"id = "75">C <br><br><br> K</button>
-      <button class = "pianoWhiteButton" data-note="76"id = "76">D <br><br><br> L</button>
-      <button class = "pianoWhiteButton" data-note="186"id = "186">E <br><br><br> ;</button>
-      <button class = "pianoWhiteButton" data-note="222"id = "222">F <br><br><br> '</button>
-      <button class = "pianoWhiteButton" data-note="220"id = "220">G <br><br><br> \</button>
-      
-    </div>
-
-    
-
-    <t id="Count">1</t>
-
+    <script src="src/index.js"></script>
     <script src="src/Synthesiser.js"></script>
-  </div>
-  </div>
-
-</div>
   </body>
-
-  <footer>
-  </footer>
 </html>
