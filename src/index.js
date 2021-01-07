@@ -279,8 +279,8 @@ function rampAmpValuesADS(A, D, S, parameter) {
 
   parameter.exponentialRampToValueAtTime(0.2, noteStart + A);
   parameter.setValueAtTime(0.2, noteStart + A);
-  parameter.exponentialRampToValueAtTime(newS + 0.01 * 0.2, noteStart + A + D);
-  parameter.setValueAtTime(newS + 0.01 * 0.2, noteStart + A + D);
+  parameter.exponentialRampToValueAtTime(newS  * 0.2, noteStart + A + D);
+  parameter.setValueAtTime(newS * 0.2, noteStart + A + D);
   if (S === 0) {
     parameter.linearRampToValueAtTime(0, noteStart + A + D + 0.01);
     parameter.setValueAtTime(0, noteStart + A + D + 0.01);
