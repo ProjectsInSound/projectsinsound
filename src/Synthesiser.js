@@ -57,8 +57,9 @@ let filtA = 0.01,
   filtD = 0.01,
   filtS = 0.96,
   filtR = 0.01;
-var cutOffFrequency = 19968;
-var filtEnvAmount = 0;
+
+let cutOffFrequency = 19968;
+let filtEnvAmount = 0;
 var noteOn = false;
 
 //creating event listeners for the user interactions
@@ -102,6 +103,8 @@ document.getElementById("piano").addEventListener("mouseleave", (e) => {
   }
 });
 
+var keyColour = null;
+
 window.onkeydown = function (event) {
   //This event listener is used to  start notes when the user presses the right key on the keyboard
   //the first if statement makes sure that the key pressed is one that has a frequency tied to it
@@ -112,6 +115,7 @@ window.onkeydown = function (event) {
   //The three held down keys don't stop as its reassignimg the empty voice
   //if four keys are held down it just steals one of them
   context.resume();
+
   let freeVoice = null;
   if (keyboardNotes[event.keyCode] != null) {
     let noteAlreadyOn = false;
@@ -140,6 +144,10 @@ window.onkeydown = function (event) {
       rampAmpValuesADS(ampA, ampD, ampS, holder[voiceTracker][1].gain);
       PolyphonicFilterADS(filtA, filtD, filtS, holder[voiceTracker][2]);
       if (document.getElementById(event.keyCode) != null) {
+        if (keyColour === null) {
+          keyColour = document.getElementById(event.keyCode).style
+            .backgroundColor;
+        }
         document.getElementById(event.keyCode).style.backgroundColor = "grey";
       }
       voiceTracker++;
@@ -173,6 +181,7 @@ window.onkeyup = function (event) {
   //the colour of the relevant keyboard button is set to white to show that it is no longer pressed
   if (document.getElementById(event.keyCode) != null) {
     document.getElementById(event.keyCode).style.backgroundColor = "lightgray";
+    document.getElementById(event.keyCode).style.backgroundColor = keyColour;
   }
 };
 
@@ -257,9 +266,13 @@ function PolyphonicFilterADS(A, D, S, filter) {
     maxPoint = (19968 - startPoint) * filtEnvAmount;
     sustainPoint = (maxPoint - startPoint) * S + startPoint;
   } else {
-    maxPoint = startPoint + startPoint * filtEnvAmount;
-    sustainPoint = startPoint - (startPoint - maxPoint) * S;
+    maxPoint = startPoint - startPoint * filtEnvAmount * -1;
+    sustainPoint = startPoint - startPoint * filtEnvAmount * S * -1;
   }
+  if (maxPoint === 0) {
+    maxPoint += 0.01;
+  }
+
   //Once the target frequency values have been calculated the frequency valuye is set to ramp to those values over time
 
   let noteStart = context.currentTime;
@@ -369,6 +382,20 @@ function createADSREventListeners() {
     filtR = calculateADR(document.getElementById("filtSlideR").value);
     document.getElementById("filtSlideRText").innerHTML = filtR.toFixed(2);
   });
+
+  document.getElementById("volumeSlider").addEventListener("input", () => {
+    maxVoiceLevel = calculateS(document.getElementById("volumeSlider").value);
+
+    document.getElementById(
+      "volumeSliderText"
+    ).innerHTML = maxVoiceLevel.toFixed(2);
+
+    for (let i = 0; i < holder.length; i++) {
+      if (holder[i][3] != null) {
+        holder[i][1].gain.value = maxVoiceLevel;
+      }
+    }
+  });
 }
 
 function createFilterSettingsEventListeners() {
@@ -409,4 +436,125 @@ function createFilterSettingsEventListeners() {
         "FilterEnvelopeAmountText"
       ).innerHTML = filtEnvAmount.toFixed(2);
     });
+}
+
+document.getElementById("bassButton").addEventListener("click", () => {
+  console.log("bassButton xclicked");
+  SetBass();
+});
+
+document.getElementById("keyboard1Button").addEventListener("input", () => {
+  console.log("keyboard1Button xclicked");
+});
+
+document.getElementById("keyboard2Button").addEventListener("input", () => {
+  console.log(" keyboard2Button xclicked");
+});
+
+function SetBass() {
+  ampA = 0.01;
+  ampD = 0.2;
+  ampS = 0.4;
+  ampR = 0.1;
+
+  filtA = 0.01;
+  filtD = 0.1;
+  filtS = 0.1;
+  filtR = 0.08;
+
+  cutOffFrequency = 100;
+  filtEnvAmount = 0.8;
+
+  keyboardNotes = {
+    65: 261.63 / 8.0,
+    83: 293.66 / 8.0,
+    68: 329.66 / 8.0,
+    70: 349.23 / 8.0,
+    71: 392 / 8.0,
+    72: 440 / 8.0,
+    74: 493.88 / 8.0,
+    75: 523.26 / 8.0,
+    76: 587.33 / 8.0,
+    186: 659.25 / 8.0,
+    222: 698.46 / 8.0,
+    220: 783.99 / 8.0
+  };
+
+  updateValues();
+}
+
+function calculateADRValue(value) {
+  //This function converts the data from a slider into a usable value for the synth's Attack, Decay and Release parameters
+
+  value *= 125.0;
+  value = Math.sqrt(value);
+  value = Math.sqrt(value);
+  value *= 100;
+
+  return value;
+}
+
+function calculateSValue(value) {
+  //This function converts the data from a slider into a usable value for the synth's Sustain parameters
+  value = Math.sqrt(value);
+  value = Math.sqrt(value);
+  value *= 500.0;
+  return value;
+}
+
+function calculateCutOffValue(value) {
+  //This function converts the data from a slider into a usable value for the synth's Cutoff parameter
+  value /= 32;
+  value = Math.sqrt(value);
+  value = Math.sqrt(value);
+  value *= 100;
+
+  return value;
+}
+
+function CalculateEnvAmountValue(value) {
+  let isNegative = false;
+  if (value < 0) {
+    isNegative = true;
+    value *= -1.0;
+  }
+
+  value = Math.sqrt(value);
+  value = Math.sqrt(value);
+  value *= 500.0;
+  if (isNegative) {
+    value *= -1.0;
+  }
+
+  return value;
+}
+
+function updateValues() {
+  document.getElementById("ampSlideA").value = calculateADRValue(ampA);
+  document.getElementById("ampSlideAText").innerHTML = ampA.toString();
+  document.getElementById("ampSlideD").value = calculateADRValue(ampD);
+  document.getElementById("ampSlideDText").innerHTML = ampD.toString();
+  document.getElementById("ampSlideS").value = calculateSValue(ampS);
+  document.getElementById("ampSlideSText").innerHTML = ampS.toString();
+  document.getElementById("ampSlideR").value = calculateADRValue(ampR);
+  document.getElementById("ampSlideRText").innerHTML = ampR.toString();
+  document.getElementById("filtSlideA").value = calculateADRValue(filtA);
+  document.getElementById("filtSlideAText").innerHTML = filtA.toString();
+  document.getElementById("filtSlideD").value = calculateADRValue(filtD);
+  document.getElementById("filtSlideDText").innerHTML = filtD.toString();
+  document.getElementById("filtSlideS").value = calculateSValue(filtS);
+  document.getElementById("filtSlideSText").innerHTML = filtS.toString();
+  document.getElementById("filtSlideR").value = calculateADRValue(filtR);
+  document.getElementById("filtSlideRText").innerHTML = filtR.toString();
+
+  document.getElementById("cutoffslider").value = calculateCutOffValue(
+    cutOffFrequency
+  );
+  document.getElementById("cutofftext").innerHTML = cutOffFrequency.toString();
+  document.getElementById(
+    "FilterEnvelopeAmountSlider"
+  ).value = CalculateEnvAmountValue(filtEnvAmount);
+  document.getElementById(
+    "FilterEnvelopeAmountText"
+  ).innerHTML = filtEnvAmount.toString();
 }
