@@ -25,25 +25,17 @@
       function openApply() {
         var x = document.getElementById("whyImApplying");
         var y = document.getElementById("synth");
-        if (x.style.display === "none") {
-          x.style.display = "flex";
-          y.style.display = "none";
-        } else {
-          x.style.display = "none";
-          y.style.display = "flex";
-        }
+
+        x.style.display = "flex";
+        y.style.display = "none";
       }
 
       function openSynth() {
         var x = document.getElementById("synth");
         var y = document.getElementById("whyImApplying");
-        if (x.style.display === "none") {
-          x.style.display = "flex";
-          y.style.display = "none";
-        } else {
-          x.style.display = "none";
-          y.style.display = "flex";
-        }
+
+        x.style.display = "grid";
+        y.style.display = "none";
       }
     </script>
 
@@ -82,20 +74,61 @@
       <section id="whyImApplying">
         <article>
           <h2>About Me</h2>
-          <p>this is my First main section</p>
+          <p>
+            this is my First main section and its getting really lomg and im
+            just trying to see what it would look like if it filled the whole
+            page
+          </p>
           <h2>Why I'm Applying</h2>
           <p>second paragraph</p>
-          <h2>Why I Could Be Good</h2>
+          <h2>Why I Would Be Good</h2>
           <p>third paragraph</p>
         </article>
       </section>
 
       <section id="synth">
-        <article>
-          <h3>About This Synthesiser</h3>
-          this is my Second main section
+        <article id="synthInfo">
+          <h3>About This Synth</h3>
+          <p>
+            I built this synthesiser using the WebAudioAPI.
+            <br />
+            <br />
+            Press a keyboard button or use the keys A->L on your keyboard to
+            play a note.
+          </p>
         </article>
-        <article>
+
+        <article id="volumeArticle">
+          <h3>Master Volume</h3>
+          <div class="slidecontainer">
+            Volume<input
+              type="range"
+              min="100"
+              max="500"
+              value="330"
+              class="slider"
+              id="volumeSlider"
+            />
+            <t id="volumeSliderText">0.20</t>
+          </div>
+        </article>
+
+        <article id="chooseSounds">
+          <h3>Choose A Preset</h3>
+          <label>
+            <input type="radio" id="bassButton" name="bass" />Bass
+          </label>
+
+          <label>
+            <input type="radio" id="keyboard1Button" name="bass" />Keyboard 1
+          </label>
+
+          <label>
+            <input type="radio" id="keyboard2Button" name="bass" />Keyboard 2
+          </label>
+        </article>
+
+        <article id="amplitudeEnvelopeArticle">
           <h3>Amplitude Envelope</h3>
 
           <div class="slidecontainer">
@@ -148,7 +181,7 @@
           </div>
         </article>
 
-        <article>
+        <article id="filterEnvelopeArticle">
           <h3>Filter Envelope</h3>
 
           <div class="slidecontainer">
@@ -158,7 +191,7 @@
               min="100"
               max="500"
               value="100"
-              class="range-slider"
+              class="slider"
               id="filtSlideA"
               s
             />
@@ -201,11 +234,11 @@
             <t id="filtSlideRText">0.01</t>
           </div>
         </article>
-        <article>
+        <article id="filterSettingsArticle">
           <h3>Filter Settings</h3>
 
           <div class="slidecontainer">
-            Cutoff Frequency<input
+            Frequency<input
               type="range"
               min="100"
               max="500"
@@ -217,7 +250,7 @@
           </div>
 
           <div class="slidecontainer">
-            Filter Envelope Amount<input
+            Env. Amount<input
               type="range"
               min="-500"
               max="500"
@@ -228,59 +261,72 @@
             <t id="FilterEnvelopeAmountText">0</t>
           </div>
         </article>
-      </section>
 
-      <div class="pianoWhiteKeys" id="piano">
-        <button class="pianoWhiteButton" data-note="65" id="65">
-          C <br /><br /><br />
-          A
-        </button>
-        <button class="pianoWhiteButton" data-note="83" id="83">
-          D<br /><br /><br />
-          S
-        </button>
-        <button class="pianoWhiteButton" data-note="68" id="68">
-          E <br /><br /><br />
-          D
-        </button>
-        <button class="pianoWhiteButton" data-note="70" id="70">
-          F <br /><br /><br />
-          F
-        </button>
-        <button class="pianoWhiteButton" data-note="71" id="71">
-          G <br /><br /><br />
-          G
-        </button>
-        <button class="pianoWhiteButton" data-note="72" id="72">
-          A <br /><br /><br />
-          H
-        </button>
-        <button class="pianoWhiteButton" data-note="74" id="74">
-          B <br /><br /><br />
-          J
-        </button>
-        <button class="pianoWhiteButton" data-note="75" id="75">
-          C <br /><br /><br />
-          K
-        </button>
-        <button class="pianoWhiteButton" data-note="76" id="76">
-          D <br /><br /><br />
-          L
-        </button>
-        <button class="pianoWhiteButton" data-note="186" id="186">
-          E <br /><br /><br />
-          ;
-        </button>
-        <button class="pianoWhiteButton" data-note="222" id="222">
-          F <br /><br /><br />
-          '
-        </button>
-        <button class="pianoWhiteButton" data-note="220" id="220">
-          G <br /><br /><br />
-          \
-        </button>
-      </div>
+        <article id="infoPanelArticle">
+          <h3>Information</h3>
+          <p id="helpText">
+            Hover over a slider for information.
+          </p>
+        </article>
+
+        <article id="piano">
+          <h3>Keyboard</h3>
+
+          <div id="pianokeys">
+            <button class="pianoWhiteButton" data-note="65" id="65">
+              C <br /><br /><br />
+              A
+            </button>
+            <button class="pianoWhiteButton" data-note="83" id="83">
+              D<br /><br /><br />
+              S
+            </button>
+            <button class="pianoWhiteButton" data-note="68" id="68">
+              E <br /><br /><br />
+              D
+            </button>
+            <button class="pianoWhiteButton" data-note="70" id="70">
+              F <br /><br /><br />
+              F
+            </button>
+            <button class="pianoWhiteButton" data-note="71" id="71">
+              G <br /><br /><br />
+              G
+            </button>
+            <button class="pianoWhiteButton" data-note="72" id="72">
+              A <br /><br /><br />
+              H
+            </button>
+            <button class="pianoWhiteButton" data-note="74" id="74">
+              B <br /><br /><br />
+              J
+            </button>
+            <button class="pianoWhiteButton" data-note="75" id="75">
+              C <br /><br /><br />
+              K
+            </button>
+            <button class="pianoWhiteButton" data-note="76" id="76">
+              D <br /><br /><br />
+              L
+            </button>
+            <button class="pianoWhiteButton" data-note="186" id="186">
+              E <br /><br /><br />
+              ;
+            </button>
+            <button class="pianoWhiteButton" data-note="222" id="222">
+              F <br /><br /><br />
+              '
+            </button>
+            <button class="pianoWhiteButton" data-note="220" id="220">
+              G <br /><br /><br />
+              \
+            </button>
+          </div>
+        </article>
+      </section>
     </main>
+    <br />
+
     <footer>
       <p>Thank you for looking at my website. Hope you like it!</p>
     </footer>
