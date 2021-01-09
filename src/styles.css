@@ -145,9 +145,24 @@ h3 {
 p {
   display: flex;
   flex-direction: row;
-  justify-content: center;
-  padding-left: 2%;
-  padding-right: 2%;
+  justify-content: flex-start;
+  padding-left: 15%;
+  padding-right: 15%;
+}
+
+b {
+  display: flex;
+  flex-direction: row;
+}
+
+span {
+  display: flex;
+  flex-direction: row;
+}
+
+#footerP {
+  padding-left: 1%;
+  padding-right: 1%;
 }
 
 #helpText {
@@ -290,4 +305,14 @@ p {
   width: 50%;
 
   justify-content: center;
+}
+
+#wavesSelector {
+  display: flex;
+  font-size: small;
+}
+
+#soundSelector {
+  display: flex;
+  font-size: small;
 }
