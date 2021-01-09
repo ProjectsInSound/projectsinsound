@@ -21,26 +21,8 @@
       </h3>
     </header>
 
-    <script>
-      function openApply() {
-        var x = document.getElementById("whyImApplying");
-        var y = document.getElementById("synth");
-
-        x.style.display = "flex";
-        y.style.display = "none";
-      }
-
-      function openSynth() {
-        var x = document.getElementById("synth");
-        var y = document.getElementById("whyImApplying");
-
-        x.style.display = "grid";
-        y.style.display = "none";
-      }
-    </script>
-
     <nav>
-      <button class="button" id="whyImApplyingButton" onclick="openApply()">
+      <button class="button" id="whyImApplyingButton">
         Why I'm applying
       </button>
 
@@ -65,7 +47,7 @@
         My Code Wars Profile
       </button>
 
-      <button class="button" id="whyImApplyingButton" onclick="openSynth()">
+      <button class="button" id="openSynthButton">
         Play a Synthesiser
       </button>
     </nav>
@@ -75,14 +57,89 @@
         <article>
           <h2>About Me</h2>
           <p>
-            this is my First main section and its getting really lomg and im
-            just trying to see what it would look like if it filled the whole
-            page
+            Hello, my name is Graham, and hopefully if you're reading this you
+            are considering my application for Founders and Coders. Before I
+            tell you about why I'm applying, I'd like to just tell you a bit
+            about myself...
+          </p>
+          <p>
+            I am 28, originally from Reading but have lived in London for
+            roughly two and a half years. When I was 22, i went to University to
+            study Music. My interests are music, cooking, cycling and meeting up
+            with friends (back when that was allowed).
+          </p>
+          <p>
+            I've always loved technology and music, which is why for this
+            website I decided to build a synthesiser. Please check it out before
+            you go, I spent ages on it.
           </p>
           <h2>Why I'm Applying</h2>
-          <p>second paragraph</p>
-          <h2>Why I Would Be Good</h2>
-          <p>third paragraph</p>
+
+          <p>
+            In short: Because I want to become a web developer, and because
+            Founders and Coders sounds like a great place to do that. A friend
+            of mine did the course quite a few years ago, and speaking to them
+            has made me really admire the work of the organisation.
+          </p>
+          <p>
+            I grew up with friends from a diverse range of backgrounds, but then
+            going to University to study music, and having worked in the arts
+            sector for the last few years, I am aware how my privilege has
+            enabled me to do this. I;ve also seen how disproportionately people
+            with my same background are represented in these areas, and the
+            detrimental effects that has. I believe the internet is the greatest
+            resource we have for changing this, because access to the internet
+            can break down so many of the barriers to information, experience
+            and knowledge.
+          </p>
+          <p>
+            I've always been a geek, and I've always spent ages on computers,
+            mostly making or listening to music. From listening to electronic
+            music, I've gotten into synthesisers, and from there I've gotten
+            into programming using Max MSP. I've also played around with trying
+            to make music in Unity, so have learnt some bits of C#. Through
+            doing this, I've found that I really enjoy sitting down and solving
+            technical problems, which is how I approached building this
+            synthesiser. Once I found out about the WebAudio API, I had to think
+            about what I wanted to make, and then solve every problem to get
+            there.
+          </p>
+          <p>
+            My interest in programming has been steadily growing over the last
+            few years, but since the pandemic hit I have found out about an
+            open-source programme called VCV Rack, and I think it's the coolest
+            thing ever. It's basically a software recreation of lots of modular
+            synthesisers, and there is a whole community of people who
+            contribute their own designs for free. There is also a tonne of
+            people doing free tutorials on Youtube. It's written in C++, and
+            it's not hosted on the web, but I think that it's amazing that with
+            an internet connection and a free piece of software you can
+            synthesise sounds that would previously need thousands of pounds
+            worth of hardware. The reason why I'm talking about this is because
+            finding out about that software, and listening to interviews of its
+            creator, has made me decide to switch lanes and commit to trying to
+            become a web developer. Although there's issues around artists
+            getting paid, I think it's great how things like mixcloud,
+            soundcloud, spotify, shazam and fiverr have opened up music. And how
+            right now I'm typing this into google docs without having to pay for
+            microsoft word. I'm not sure exactly what I want to do for work, but
+            I'd love to work somewhere that opens up doors to cool things, and I
+            think being a web developer is the best way of doing that.
+          </p>
+          <p>
+            I'm a sociable person, and I think I'm pretty open-minded and
+            comfortable in the company of all sorts of people. I think that it
+            is much easier to learn and solve problems as a team, and if i were
+            to be offered a place on the course, I would be hoping to make a lot
+            of new friends and work with all of the people on the course to
+            succeed together. Through making music, I've worked with loads of
+            people on loads of different collaborative projects and really
+            enjoyed it, and it would be great to be able to bring that spirit to
+            Founders and Coders.
+          </p>
+          <p>
+            Thanks for reading, I hope I didn't go on too long.
+          </p>
         </article>
       </section>
 
@@ -93,8 +150,8 @@
             I built this synthesiser using the WebAudioAPI.
             <br />
             <br />
-            Press a keyboard button or use the keys A->L on your keyboard to
-            play a note.
+            Press a keyboard button or use the keys A to L on your keyboard to
+            play notes.
           </p>
         </article>
 
@@ -115,17 +172,36 @@
 
         <article id="chooseSounds">
           <h3>Choose A Preset</h3>
-          <label>
-            <input type="radio" id="bassButton" name="bass" />Bass
-          </label>
+          <div id="soundSelector">
+            <label>
+              <input type="radio" id="bassButton" name="preset" />Bass
+            </label>
 
-          <label>
-            <input type="radio" id="keyboard1Button" name="bass" />Keyboard 1
-          </label>
+            <label>
+              <input type="radio" id="keyboard1Button" name="preset" />Keyboard
+              1
+            </label>
 
-          <label>
-            <input type="radio" id="keyboard2Button" name="bass" />Keyboard 2
-          </label>
+            <label>
+              <input type="radio" id="keyboard2Button" name="preset" />Keyboard
+              2
+            </label>
+          </div>
+
+          <h4>Choose A Waveform</h4>
+          <div id="wavesSelector">
+            <label>
+              <input type="radio" id="squareButton" name="wave" />Square
+            </label>
+
+            <label>
+              <input type="radio" id="sawtoothButton" name="wave" />Sawtooth
+            </label>
+
+            <label>
+              <input type="radio" id="triangleButton" name="wave" />Triangle
+            </label>
+          </div>
         </article>
 
         <article id="amplitudeEnvelopeArticle">
@@ -265,7 +341,7 @@
         <article id="infoPanelArticle">
           <h3>Information</h3>
           <p id="helpText">
-            Hover over a slider for information.
+            Hover over a slider or button for information.
           </p>
         </article>
 
@@ -328,7 +404,7 @@
     <br />
 
     <footer>
-      <p>Thank you for looking at my website. Hope you like it!</p>
+      <p id="footerP">Thank you for looking at my website. Hope you like it!</p>
     </footer>
 
     <script src="src/index.js"></script>
