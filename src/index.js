@@ -16,13 +16,23 @@ var informationStrings = {
   cutoffslider: "This slider changes the cut-off frequency of the filter.",
   FilterEnvelopeAmountSlider:
     "This slider changes the amount of modulation of the cut-off frequency.",
-  volumeSlider: "Move this slider to change the overall volume."
+  volumeSlider: "Move this slider to change the overall volume.",
+  bassButton: "Low octave, plays only one note at a time.",
+  keyboard1Button: "A plucky, trance-style syntheiser sound.",
+  keyboard2Button: "A mellower, slightly organ-like keyboard sound.",
+  squareButton: "Sets the basic waveform to a buzzy square wave",
+  triangleButton: "Sets the basic waveform to a mellow triangle wave.",
+  sawtoothButton: "Sets the basic waveform to a bright sawtooth wave."
 };
 
 document.getElementById("synth").style.display = "none";
 document.getElementById("helpText").style.color = "grey";
+document.getElementById("squareButton").checked = true;
 
-let infoText = "Hover over a slider for information.";
+let infoText = "Hover over a slider or button for information.";
+
+let buttonTextColor = document.getElementById("whyImApplyingButton").style
+  .color;
 
 for (const item in informationStrings) {
   applyInfoListeners(item);
@@ -42,4 +52,35 @@ function applyInfoListeners(sliderName) {
       document.getElementById("helpText").style.color = "grey";
     });
   }
+}
+
+document.getElementById("whyImApplyingButton").addEventListener("click", () => {
+  openApply();
+});
+
+document.getElementById("openSynthButton").addEventListener("click", () => {
+  openSynth();
+  console.log("opensynthclicked");
+});
+
+function openApply() {
+  var x = document.getElementById("whyImApplying");
+  var y = document.getElementById("synth");
+
+  document.getElementById("whyImApplyingButton").style.color = "orange";
+  document.getElementById("openSynthButton").style.color = buttonTextColor;
+
+  x.style.display = "flex";
+  y.style.display = "none";
+}
+
+function openSynth() {
+  var x = document.getElementById("synth");
+  var y = document.getElementById("whyImApplying");
+
+  document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
+  document.getElementById("openSynthButton").style.color = "orange";
+
+  x.style.display = "grid";
+  y.style.display = "none";
 }
