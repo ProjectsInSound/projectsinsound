@@ -1,17 +1,4 @@
-/*
-let synthSettings = {
-  amplitudeA: 0.01,
-  amplitudeD: 0.01,
-  amplitudeS: 0.96,
-  amplitudeR: 0.01,
-  filterA: 0.01,
-  filterD: 0.01,
-  filterS: 0.96,
-  filterR: 0.01,
-  cutoff: 19968,
-  envAmount: 0
-};
-*/
+
 
 //Creating all Audio Nodes needed for the synthesiser element of the website
 //The variable holder holds the oscillator, gain and filter elements for each voice, as well as their current note data
@@ -60,6 +47,7 @@ let filtA = 0.01,
 
 let cutOffFrequency = 19968;
 let filtEnvAmount = 0;
+let bassMode = false;
 var noteOn = false;
 
 //creating event listeners for the user interactions
@@ -138,6 +126,10 @@ window.onkeydown = function (event) {
     //The relevant button on the keyboard is then coloured grey
     //The voice tracker is then incremented and then there is a remainder division by the number of voices
     //This makes sure that every new note is assigned to a new voice, with a maximum of 4 voices
+
+    if (bassMode === true) {
+      voiceTracker = 0;
+    }
     if (noteAlreadyOn === false) {
       holder[voiceTracker][0].frequency.value = keyboardNotes[event.keyCode];
       holder[voiceTracker][3] = event.keyCode;
@@ -439,17 +431,46 @@ function createFilterSettingsEventListeners() {
 }
 
 document.getElementById("bassButton").addEventListener("click", () => {
-  console.log("bassButton xclicked");
   SetBass();
+  updateValues();
 });
 
-document.getElementById("keyboard1Button").addEventListener("input", () => {
-  console.log("keyboard1Button xclicked");
+document.getElementById("keyboard1Button").addEventListener("click", () => {
+  SetKeyboard1();
+  updateValues();
 });
 
-document.getElementById("keyboard2Button").addEventListener("input", () => {
-  console.log(" keyboard2Button xclicked");
+document.getElementById("keyboard2Button").addEventListener("click", () => {
+  SetKeyboard2();
+  updateValues();
 });
+
+document.getElementById("squareButton").addEventListener("click", () => {
+  setOScillatorWaveform("square");
+});
+
+document.getElementById("triangleButton").addEventListener("click", () => {
+  setOScillatorWaveform("triangle");
+});
+
+document.getElementById("sawtoothButton").addEventListener("click", () => {
+  setOScillatorWaveform("sawtooth");
+});
+
+function setOScillatorWaveform(waveform) {
+  for (let i = 0; i < holder.length; i++) {
+    holder[i][0].type = waveform;
+  }
+  if (waveform === "sawtooth") {
+    document.getElementById("sawtoothButton").checked = true;
+  }
+  if (waveform === "square") {
+    document.getElementById("squareButton").checked = true;
+  }
+  if (waveform === "triangle") {
+    document.getElementById("triangleButton").checked = true;
+  }
+}
 
 function SetBass() {
   ampA = 0.01;
@@ -479,8 +500,72 @@ function SetBass() {
     222: 698.46 / 8.0,
     220: 783.99 / 8.0
   };
+  setOScillatorWaveform("square");
+  bassMode = true;
+}
 
-  updateValues();
+function SetKeyboard1() {
+  ampA = 0.01;
+  ampD = 1.6;
+  ampS = 0.08;
+  ampR = 1.87;
+
+  filtA = 0.02;
+  filtD = 0.05;
+  filtS = 0.0;
+  filtR = 0.13;
+
+  cutOffFrequency = 32;
+  filtEnvAmount = 0.33;
+
+  keyboardNotes = {
+    65: 261.63,
+    83: 293.66,
+    68: 329.66,
+    70: 349.23,
+    71: 392,
+    72: 440,
+    74: 493.88,
+    75: 523.26,
+    76: 587.33,
+    186: 659.25,
+    222: 698.46,
+    220: 783.99
+  };
+  setOScillatorWaveform("triangle");
+  bassMode = false;
+}
+
+function SetKeyboard2() {
+  ampA = 0.01;
+  ampD = 0.01;
+  ampS = 0.96;
+  ampR = 2.97;
+
+  filtA = 0.13;
+  filtD = 0.3;
+  filtS = 0.34;
+  filtR = 0.49;
+
+  cutOffFrequency = 367;
+  filtEnvAmount = -0.63;
+
+  keyboardNotes = {
+    65: 261.63 / 2.0,
+    83: 293.66 / 2.0,
+    68: 329.66 / 2.0,
+    70: 349.23 / 2.0,
+    71: 392 / 2.0,
+    72: 440 / 2.0,
+    74: 493.88 / 2.0,
+    75: 523.26 / 2.0,
+    76: 587.33 / 2.0,
+    186: 659.25 / 2.0,
+    222: 698.46 / 2.0,
+    220: 783.99 / 2.0
+  };
+  setOScillatorWaveform("sawtooth");
+  bassMode = false;
 }
 
 function calculateADRValue(value) {
