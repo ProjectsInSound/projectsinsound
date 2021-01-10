@@ -316,3 +316,26 @@ span {
   display: flex;
   font-size: small;
 }
+
+a {
+  display: inline;
+  color: blue;
+  font-weight: bold;
+  text-decoration: underline;
+}
+
+b {
+  display: inline;
+}
+
+#linkPara {
+  display: block;
+}
+
+.linkPara {
+  display: block;
+}
+
+#helpText {
+  color: grey;
+}
