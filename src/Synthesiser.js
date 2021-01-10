@@ -1,5 +1,3 @@
-
-
 //Creating all Audio Nodes needed for the synthesiser element of the website
 //The variable holder holds the oscillator, gain and filter elements for each voice, as well as their current note data
 
@@ -120,6 +118,12 @@ window.onkeydown = function (event) {
       voiceTracker = freeVoice;
     }
 
+    //When bass mode is set to true, only one note can play at once, so only one note is used
+
+    if (bassMode === true) {
+      voiceTracker = 0;
+    }
+
     //if the note is not already playing in one of the voices then start playing it
     //the frequency of that voice is set to the relevant frequency, and the key pressed is assigned to that voice
     //The ADS portion of that note are then triggered by the two functions
@@ -127,9 +131,6 @@ window.onkeydown = function (event) {
     //The voice tracker is then incremented and then there is a remainder division by the number of voices
     //This makes sure that every new note is assigned to a new voice, with a maximum of 4 voices
 
-    if (bassMode === true) {
-      voiceTracker = 0;
-    }
     if (noteAlreadyOn === false) {
       holder[voiceTracker][0].frequency.value = keyboardNotes[event.keyCode];
       holder[voiceTracker][3] = event.keyCode;
@@ -430,6 +431,9 @@ function createFilterSettingsEventListeners() {
     });
 }
 
+//Creating event listeners for the preset buttons
+//Each preset button uses is its own function to set the parameters
+
 document.getElementById("bassButton").addEventListener("click", () => {
   SetBass();
   updateValues();
@@ -445,6 +449,8 @@ document.getElementById("keyboard2Button").addEventListener("click", () => {
   updateValues();
 });
 
+//Creating event listeners to change the waveform of the oscillator
+
 document.getElementById("squareButton").addEventListener("click", () => {
   setOScillatorWaveform("square");
 });
@@ -458,6 +464,7 @@ document.getElementById("sawtoothButton").addEventListener("click", () => {
 });
 
 function setOScillatorWaveform(waveform) {
+  //This function changes the oscillator waveform for all of the voices to whatever is specified on the inoput argument
   for (let i = 0; i < holder.length; i++) {
     holder[i][0].type = waveform;
   }
@@ -473,6 +480,7 @@ function setOScillatorWaveform(waveform) {
 }
 
 function SetBass() {
+  //function to change paramters to a bass sound
   ampA = 0.01;
   ampD = 0.2;
   ampS = 0.4;
@@ -485,6 +493,8 @@ function SetBass() {
 
   cutOffFrequency = 100;
   filtEnvAmount = 0.8;
+
+  //Dividing by 8 to lower the frequency by three octaves
 
   keyboardNotes = {
     65: 261.63 / 8.0,
@@ -501,10 +511,12 @@ function SetBass() {
     220: 783.99 / 8.0
   };
   setOScillatorWaveform("square");
+  //setting bass mode to be true so only one voice is used
   bassMode = true;
 }
 
 function SetKeyboard1() {
+  //function to set the paramters to a preset plucky, polyphonic synth patch
   ampA = 0.01;
   ampD = 1.6;
   ampS = 0.08;
@@ -537,6 +549,7 @@ function SetKeyboard1() {
 }
 
 function SetKeyboard2() {
+  //function to set parameters for a slow, organ like keyboard sound
   ampA = 0.01;
   ampD = 0.01;
   ampS = 0.96;
@@ -549,6 +562,7 @@ function SetKeyboard2() {
 
   cutOffFrequency = 367;
   filtEnvAmount = -0.63;
+  //dividing by two to lower the notes by one octave
 
   keyboardNotes = {
     65: 261.63 / 2.0,
@@ -569,7 +583,7 @@ function SetKeyboard2() {
 }
 
 function calculateADRValue(value) {
-  //This function converts the data from a slider into a usable value for the synth's Attack, Decay and Release parameters
+  //This function converts the data  for the synth's Attack, Decay and Release parameters to a value for the slider
 
   value *= 125.0;
   value = Math.sqrt(value);
@@ -580,7 +594,7 @@ function calculateADRValue(value) {
 }
 
 function calculateSValue(value) {
-  //This function converts the data from a slider into a usable value for the synth's Sustain parameters
+  //This function converts the data for the synth's Sustain parameters to a value for the slider
   value = Math.sqrt(value);
   value = Math.sqrt(value);
   value *= 500.0;
@@ -588,7 +602,7 @@ function calculateSValue(value) {
 }
 
 function calculateCutOffValue(value) {
-  //This function converts the data from a slider into a usable value for the synth's Cutoff parameter
+  //This function converts the data for the synth's Cutoff parameter to a value for the slider
   value /= 32;
   value = Math.sqrt(value);
   value = Math.sqrt(value);
@@ -598,6 +612,7 @@ function calculateCutOffValue(value) {
 }
 
 function CalculateEnvAmountValue(value) {
+  //This function converts the data for the synth's Cutoff Envelope Am ount parameter to a value for the slider
   let isNegative = false;
   if (value < 0) {
     isNegative = true;
@@ -615,6 +630,8 @@ function CalculateEnvAmountValue(value) {
 }
 
 function updateValues() {
+  //This function sets all of the sliders and their corresponding text to be updated to the current parametr values
+
   document.getElementById("ampSlideA").value = calculateADRValue(ampA);
   document.getElementById("ampSlideAText").innerHTML = ampA.toString();
   document.getElementById("ampSlideD").value = calculateADRValue(ampD);
