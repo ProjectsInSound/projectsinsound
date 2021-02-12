@@ -191,3 +191,4 @@ function openMusic() {
   document.getElementById("systemDesign").style.display = "none";
   document.getElementById("music").style.display = "flex";
 }
+
