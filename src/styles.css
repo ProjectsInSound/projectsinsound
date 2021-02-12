@@ -18,7 +18,7 @@ main {
 header {
   display: flex;
   font-family: sans-serif;
-  border: 4px solid orange;
+  border: 4px solid gray;
   border-radius: 10px;
   border-bottom: none;
   border-bottom-left-radius: 0;
@@ -30,7 +30,7 @@ header {
   align-items: flex-end;
   font-size: x-large;
   background-color: whitesmoke;
-  color: rgb(77, 77, 77);
+  color: black;
 }
 
 nav {
@@ -38,7 +38,7 @@ nav {
   justify-content: space-around;
   padding: 10px;
   background-color: whitesmoke;
-  border: 4px solid orange;
+  border: 4px solid gray;
   border-top: none;
   border-radius: 10px;
   border-top-left-radius: 0;
@@ -50,7 +50,7 @@ footer {
   flex-direction: row;
   justify-content: flex-end;
   height: 1%;
-  border: 2px solid orange;
+  border: 2px solid gray;
   border-radius: 10px;
   font-size: x-small;
   padding: 10px;
@@ -65,7 +65,7 @@ section {
   flex-direction: row;
   justify-content: space-between;
   background-color: whitesmoke;
-  border: 2px solid orange;
+  border: 2px solid gray;
   border-radius: 10px;
   width: 100%;
 }
@@ -92,16 +92,16 @@ article {
 #header2 {
   display: flex;
   border: 4px solid white;
-  border-left: 4px solid orange;
-  border-right: 4px solid orange;
-  border-top: 2px solid orange;
-  border-bottom: 2px solid orange;
+  border-left: 4px solid gray;
+  border-right: 4px solid gray;
+  border-top: 2px solid gray;
+  border-bottom: 2px solid gray;
   border-radius: 0px;
   padding: 0px;
   justify-content: flex-end;
   font-size: x-small;
   background-color: whitesmoke;
-  color: rgb(77, 77, 77);
+  color: rgb(66, 59, 59);
 }
 
 #picture {
@@ -115,11 +115,29 @@ article {
   display: none;
 }
 
+#Unity3D {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
 #synth {
   display: none;
 }
 
 #whyImApplying {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#systemDesign {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
+
+#music {
   display: flex;
   flex-direction: row;
   justify-content: center;
