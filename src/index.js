@@ -29,6 +29,9 @@ var informationStrings = {
 
 //setting the synth panel to be invisible when the website is loaded
 document.getElementById("synth").style.display = "none";
+document.getElementById("unity3D").style.display = "none";
+document.getElementById("systemDesign").style.display = "none";
+document.getElementById("music").style.display = "none";
 
 //setting the default paramater for the synth waveform
 document.getElementById("squareButton").checked = true;
@@ -66,6 +69,18 @@ document.getElementById("whyImApplyingButton").addEventListener("click", () => {
   openApply();
 });
 
+document.getElementById("Unity3DButton").addEventListener("click", () => {
+  openUnity3D();
+});
+
+document.getElementById("systemDesignButton").addEventListener("click", () => {
+  openSystemDesign();
+});
+
+document.getElementById("musicButton").addEventListener("click", () => {
+  openMusic();
+});
+
 document.getElementById("openSynthButton").addEventListener("click", () => {
   openSynth();
 });
@@ -90,9 +105,15 @@ function openApply() {
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = "orange";
   document.getElementById("openSynthButton").style.color = buttonTextColor;
+  document.getElementById("Unity3DButton").style.color = buttonTextColor;
+  document.getElementById("musicButton").style.color = buttonTextColor;
+  document.getElementById("systemDesignButton").style.color = buttonTextColor;
 
   x.style.display = "flex";
   y.style.display = "none";
+  document.getElementById("systemDesign").style.display = "none";
+  document.getElementById("unity3D").style.display = "none";
+  document.getElementById("music").style.display = "none";
 }
 
 function openSynth() {
@@ -103,7 +124,70 @@ function openSynth() {
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
   document.getElementById("openSynthButton").style.color = "orange";
+  document.getElementById("Unity3DButton").style.color = buttonTextColor;
+  document.getElementById("musicButton").style.color = buttonTextColor;
+  document.getElementById("systemDesignButton").style.color = buttonTextColor;
 
   x.style.display = "grid";
   y.style.display = "none";
+  document.getElementById("systemDesign").style.display = "none";
+  document.getElementById("unity3D").style.display = "none";
+  document.getElementById("music").style.display = "none";
+}
+
+function openUnity3D() {
+  //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
+  var x = document.getElementById("synth");
+  var y = document.getElementById("whyImApplying");
+
+  //once pressed, the button stays orange
+  document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
+  document.getElementById("openSynthButton").style.color = buttonTextColor;
+  document.getElementById("Unity3DButton").style.color = "orange";
+  document.getElementById("musicButton").style.color = buttonTextColor;
+  document.getElementById("systemDesignButton").style.color = buttonTextColor;
+
+  x.style.display = "none";
+  y.style.display = "none";
+  document.getElementById("systemDesign").style.display = "none";
+  document.getElementById("unity3D").style.display = "flex";
+  document.getElementById("music").style.display = "none";
+}
+
+function openSystemDesign() {
+  //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
+  var x = document.getElementById("synth");
+  var y = document.getElementById("whyImApplying");
+
+  //once pressed, the button stays orange
+  document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
+  document.getElementById("openSynthButton").style.color = buttonTextColor;
+  document.getElementById("systemDesignButton").style.color = "orange";
+  document.getElementById("Unity3DButton").style.color = buttonTextColor;
+  document.getElementById("musicButton").style.color = buttonTextColor;
+
+  x.style.display = "none";
+  y.style.display = "none";
+  document.getElementById("unity3D").style.display = "none";
+  document.getElementById("systemDesign").style.display = "flex";
+  document.getElementById("music").style.display = "none";
+}
+
+function openMusic() {
+  //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
+  var x = document.getElementById("synth");
+  var y = document.getElementById("whyImApplying");
+
+  //once pressed, the button stays orange
+  document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
+  document.getElementById("openSynthButton").style.color = buttonTextColor;
+  document.getElementById("systemDesignButton").style.color = buttonTextColor;
+  document.getElementById("Unity3DButton").style.color = buttonTextColor;
+  document.getElementById("musicButton").style.color = "orange";
+
+  x.style.display = "none";
+  y.style.display = "none";
+  document.getElementById("unity3D").style.display = "none";
+  document.getElementById("systemDesign").style.display = "none";
+  document.getElementById("music").style.display = "flex";
 }
