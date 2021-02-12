@@ -115,7 +115,7 @@ article {
   display: none;
 }
 
-#Unity3D {
+#unity3D {
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -158,6 +158,44 @@ h3 {
   display: flex;
   flex-direction: row;
   padding-right: 1%;
+}
+
+h4 {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 0%;
+  margin-bottom: 0%;
+  margin-top: 0%;
+}
+h5 {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-right: 10%;
+  padding-bottom: 0%;
+  margin-top: 0%;
+  margin-bottom: 0%;
+}
+
+.smalltext {
+  display: flex;
+  flex-direction: row;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: small;
+  margin-top: 0%;
+}
+
+.smalltextvid {
+  display: flex;
+
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: small;
+  margin-top: 0%;
+  justify-content: center;
 }
 
 p {
