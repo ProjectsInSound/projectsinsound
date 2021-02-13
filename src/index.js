@@ -94,7 +94,7 @@ document.getElementById("synthLink").addEventListener("mouseenter", () => {
 });
 
 document.getElementById("synthLink").addEventListener("mouseleave", () => {
-  document.getElementById("synthLink").style.color = "blue";
+  document.getElementById("synthLink").style.color = "black";
 });
 
 function openApply() {
