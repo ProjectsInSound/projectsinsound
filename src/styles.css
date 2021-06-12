@@ -198,6 +198,16 @@ h5 {
   justify-content: center;
 }
 
+.video {
+  display: flex;
+
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: small;
+  margin-top: 0%;
+  justify-content: center;
+}
+
 p {
   display: flex;
   flex-direction: row;
