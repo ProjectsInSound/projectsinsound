@@ -406,10 +406,10 @@ b {
   color: grey;
 }
 
-.audio{
+audio{
   align-self: center;
 }
 
-.video{
+video{
    align-self: center;
 }
