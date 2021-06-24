@@ -69,7 +69,36 @@ document.getElementById("piano").addEventListener("mousedown", (e) => {
   }
 });
 
+
+
 document.getElementById("piano").addEventListener("mouseup", (e) => {
+  /* This event listener is used to end notes when a user releases the mouse button
+      The noteOn message is set to false, and then the "release" portion of the note is triggered using the two functions
+  */
+  noteOn = false;
+  rampAmpValuesR(ampR, holder[voiceTracker][1].gain);
+  filterTestR(filtR, holder[voiceTracker][2].frequency);
+});
+
+//ADDED POINTER IN TO WORK ON MOBILE!!!!!!!!!
+document.getElementById("piano").addEventListener("pointerdown", (e) => {
+  /*This event listener is triggered when the user presses on one of the keyboard keys
+    First the AudioContext is resumed - this has to be done after a user interaction
+    First the noteOn message is set to true so that we kjnow a note is playing
+    Next the oscillator of the current voice is set to the relevant frequency
+    Then the envelope generators for the Amplitude and the Filter of that voice are triggered
+    */
+  context.resume();
+  noteOn = true;
+  if (e.target.dataset.note != null) {
+    holder[voiceTracker][0].frequency.value =
+      keyboardNotes[e.target.dataset.note];
+    rampAmpValuesADS(ampA, ampD, ampS, holder[voiceTracker][1].gain);
+    PolyphonicFilterADS(filtA, filtD, filtS, holder[voiceTracker][2]);
+  }
+});
+
+document.getElementById("piano").addEventListener("pointerup", (e) => {
   /* This event listener is used to end notes when a user releases the mouse button
       The noteOn message is set to false, and then the "release" portion of the note is triggered using the two functions
   */
