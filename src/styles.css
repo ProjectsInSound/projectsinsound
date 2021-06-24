@@ -405,3 +405,11 @@ b {
 #helpText {
   color: grey;
 }
+
+.audio{
+  align-self: center;
+}
+
+.video{
+   align-self: center;
+}
