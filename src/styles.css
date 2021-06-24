@@ -413,3 +413,7 @@ audio{
 video{
    align-self: center;
 }
+
+iframe{
+   align-self: center;
+}
