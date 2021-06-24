@@ -80,6 +80,17 @@ document.getElementById("piano").addEventListener("mouseup", (e) => {
   filterTestR(filtR, holder[voiceTracker][2].frequency);
 });
 
+document.getElementById("piano").addEventListener("mouseleave", (e) => {
+  /* This event listener is to stop any notes from ringing on if the user drags their mouse out of the button
+      whilst still holding down the mouse, by triggering the two release functions to end a note
+  */
+  if (noteOn === true) {
+    noteOn = false;
+    rampAmpValuesR(ampR, holder[voiceTracker][1].gain);
+    filterTestR(filtR, holder[voiceTracker][2].frequency);
+  }
+});
+
 //ADDED POINTER IN TO WORK ON MOBILE!!!!!!!!!
 document.getElementById("piano").addEventListener("pointerdown", (e) => {
   /*This event listener is triggered when the user presses on one of the keyboard keys
@@ -107,7 +118,7 @@ document.getElementById("piano").addEventListener("pointerup", (e) => {
   filterTestR(filtR, holder[voiceTracker][2].frequency);
 });
 
-document.getElementById("piano").addEventListener("mouseleave", (e) => {
+document.getElementById("piano").addEventListener("pointerleave", (e) => {
   /* This event listener is to stop any notes from ringing on if the user drags their mouse out of the button
       whilst still holding down the mouse, by triggering the two release functions to end a note
   */
@@ -117,6 +128,8 @@ document.getElementById("piano").addEventListener("mouseleave", (e) => {
     filterTestR(filtR, holder[voiceTracker][2].frequency);
   }
 });
+
+
 
 var keyColour = null;
 
