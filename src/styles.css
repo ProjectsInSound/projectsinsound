@@ -415,6 +415,14 @@ audio{
 
 
 iframe{
+  display: flex;
+  width: 60%;
+  padding-left: 10%;
+  padding-right: 10%;
+  font-size: small;
+  margin-top: 0%;
+  justify-content: center;
+  align-self: center;
    align-self: center;
   width: 60%;
 }
