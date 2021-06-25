@@ -425,8 +425,10 @@ iframe{
 
 .videoWrapper {
   position: relative;
-  padding-bottom: 56.25%; /* 16:9 */
-  height: 0;
+    padding-bottom: 34.25%;
+    height: 0;
+    width: 60%;
+    align-self: center;
 }
 .videoWrapper iframe {
           position: absolute;
