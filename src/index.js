@@ -194,7 +194,8 @@ function openMusic() {
 }
 
 function pauseVideos() {
-  videoList = document.getElementsByTagName("video");
+  console.log("video pause function called");
+  let videoList = document.getElementsByTagName("video");
   for(let i = 0; i< videoList.Length; i++){
     console.log(videoList[i]);
   }
