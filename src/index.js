@@ -67,6 +67,7 @@ function applyInfoListeners(sliderName) {
 
 document.getElementById("whyImApplyingButton").addEventListener("click", () => {
   openApply();
+  pauseVideos();
 });
 
 document.getElementById("Unity3DButton").addEventListener("click", () => {
@@ -190,5 +191,14 @@ function openMusic() {
   document.getElementById("unity3D").style.display = "none";
   document.getElementById("systemDesign").style.display = "none";
   document.getElementById("music").style.display = "flex";
+}
+
+function pauseVideos() {
+  videoList = document.getElementsByTagName("video");
+  for(let i = 0; i< videoList.Length; i++){
+    console.log(videoList[i]);
+  }
+  
+  
 }
 
