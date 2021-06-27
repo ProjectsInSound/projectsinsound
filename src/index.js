@@ -226,8 +226,8 @@ function PauseAllAudio(){
 function PauseAllAudio2() {
   var audioPlayers = document.getElementsByTagName("audio");
   for (var i = 0; i < audioPlayers.length; i++) {
-    if (audioPlayers[i] !== e.target) {
+   
       audioPlayers[i].pause();
-    }
+    
   }
 }
