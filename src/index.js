@@ -121,6 +121,7 @@ function openSynth() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
+   PauseAllAudio();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -140,6 +141,7 @@ function openUnity3D() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
+  PauseAllAudio();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -159,6 +161,7 @@ function openSystemDesign() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
+   PauseAllAudio();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -178,6 +181,7 @@ function openMusic() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
+   PauseAllAudio();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -201,5 +205,19 @@ function pauseVideos() {
   }
   
   
+}
+
+document.addEventListener("play",  PauseAllAudio(), true);
+
+
+function PauseAllAudio(){
+  return function curried_func(e) {
+    var audioPlayers = document.getElementsByTagName("audio");
+    for (var i = 0; i < audioPlayers.length; i++) {
+      if (audioPlayers[i] !== e.target) {
+        audioPlayers[i].pause();
+      }
+    }
+  }
 }
 
