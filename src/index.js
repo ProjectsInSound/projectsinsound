@@ -203,6 +203,7 @@ function pauseVideos() {
   let videoList = document.getElementsByTagName("video");
   for(let i = 0; i< videoList.Length; i++){
     console.log(videoList[i]);
+    videoList[i].pause();
   }
   
   
