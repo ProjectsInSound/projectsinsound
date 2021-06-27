@@ -102,6 +102,7 @@ function openApply() {
   //function to open the "Why I'm Applying" section and make sure that "Play a Syntheiser" is closed
   var x = document.getElementById("whyImApplying");
   var y = document.getElementById("synth");
+   PauseAllAudio2();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = "orange";
@@ -121,7 +122,7 @@ function openSynth() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
-   PauseAllAudio();
+   PauseAllAudio2();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -141,7 +142,7 @@ function openUnity3D() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
-  PauseAllAudio();
+  PauseAllAudio2();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -161,7 +162,7 @@ function openSystemDesign() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
-   PauseAllAudio();
+   PauseAllAudio2();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -181,7 +182,7 @@ function openMusic() {
   //function to open the "Play a Syntheiser" section and make sure that "Why I'm Applying" is closed
   var x = document.getElementById("synth");
   var y = document.getElementById("whyImApplying");
-   PauseAllAudio();
+   PauseAllAudio2();
 
   //once pressed, the button stays orange
   document.getElementById("whyImApplyingButton").style.color = buttonTextColor;
@@ -221,3 +222,11 @@ function PauseAllAudio(){
   }
 }
 
+function PauseAllAudio2() {
+  var audioPlayers = document.getElementsByTagName("audio");
+  for (var i = 0; i < audioPlayers.length; i++) {
+    if (audioPlayers[i] !== e.target) {
+      audioPlayers[i].pause();
+    }
+  }
+}
