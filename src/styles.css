@@ -98,7 +98,7 @@ article {
   border-bottom: 2px solid gray;
   border-radius: 0px;
   padding: 0px;
-  justify-content: flex-end;
+  justify-content: flex-start;
   font-size: x-small;
   background-color: whitesmoke;
   color: rgb(66, 59, 59);
