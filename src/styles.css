@@ -97,7 +97,7 @@ article {
   border-top: 2px solid gray;
   border-bottom: 2px solid gray;
   border-radius: 0px;
-  padding: 0px;
+  padding-left: 5%;
   justify-content: flex-start;
   font-size: x-small;
   background-color: whitesmoke;
